@@ -1,63 +1,83 @@
-# 🎬 Elasticsearch-powered movie search engine with FastAPI and Docker
+# 🎬 Movie Search Engine (Elasticsearch + FastAPI + Docker)
 
-A full-stack movie search engine built with:
-- Elasticsearch
-- FastAPI
-- Docker
-- MovieLens dataset
+A full-stack movie search engine powered by Elasticsearch.
+
+Features fuzzy search, tag-based recommendations, and real-time analytics.
 
 ---
 
-## 🚀 Run the project
+## Run the project
 
 ```bash
-docker compose up
+docker compose up --build
 ````
 
 ---
 
-## 🌐 Access
+## Access
 
-* Frontend: [http://localhost:8080](http://localhost:8080)
-* API docs: [http://localhost:8000/docs](http://localhost:8000/docs)
-* Kibana: [http://localhost:5601](http://localhost:5601)
+* Frontend → [http://localhost:8080](http://localhost:8080)
+* API Docs → [http://localhost:8000/docs](http://localhost:8000/docs)
+* Kibana → [http://localhost:5601](http://localhost:5601)
 
 ---
 
-## 🔍 Features
+## eatures
 
-* Fuzzy movie search
+* Fuzzy movie search (handles typos)
 * Tag-based recommendations
 * Genre filtering
-* Analytics (Kibana)
+* Analytics with Kibana
 
 ---
 
-## 📦 Dataset
-
-MovieLens small dataset
-
----
-
-## 📦 Dataset Setup
+## Dataset Setup
 
 Download the MovieLens dataset:
 
-https://grouplens.org/datasets/movielens/latest/
+[https://grouplens.org/datasets/movielens/latest/](https://grouplens.org/datasets/movielens/latest/)
 
-Extract it into:
+Extract into:
 
+```
 data/ml-latest-small/
+```
 
 ---
 
-Then run:
+### Generate merged dataset
 
 ```bash
 python ingest/merge_movies_tags.py
-````
+```
 
-## 🧠 Tech Stack
+---
+
+### Load data into Elasticsearch
+
+```bash
+curl -X POST localhost:9200/_bulk --data-binary "@data/movies_final.json"
+```
+
+---
+
+## Run without Docker (optional)
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run API:
+
+```bash
+uvicorn api.main:app --reload
+```
+
+---
+
+## Tech Stack
 
 * Elasticsearch
 * FastAPI
@@ -66,29 +86,7 @@ python ingest/merge_movies_tags.py
 
 ---
 
-# 🚀 5. Run everything
+## Notes
 
-```bash
-docker compose up --build
-````
-
----
-
-# ⚠️ First run checklist
-
-1. Wait for Elasticsearch to fully start (~30 sec)
-2. Run your ingestion script (once)
-
-👉 You can still run locally:
-
-```bash
-python ingest/merge_movies_tags.py
-```
-
-Then load data:
-
-```bash
-curl -X POST localhost:9200/_bulk --data-binary "@data/movies_final.json"
-```
-
----
+* First startup may take ~30 seconds (Elasticsearch warmup)
+* Dataset is not included to keep repo lightweight
