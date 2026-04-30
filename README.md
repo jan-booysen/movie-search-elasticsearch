@@ -22,7 +22,7 @@ docker compose up --build
 
 ---
 
-## eatures
+## Features
 
 * Fuzzy movie search (handles typos)
 * Tag-based recommendations
