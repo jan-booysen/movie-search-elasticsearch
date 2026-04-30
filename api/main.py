@@ -23,7 +23,7 @@ def root():
     return {"message": "Movie Search API is running 🚀"}
 
 
-# 🔍 Search endpoint
+# Search endpoint
 @app.get("/search")
 def search_movies(q: str = Query(...)):
     query = {
@@ -42,7 +42,7 @@ def search_movies(q: str = Query(...)):
     return [hit["_source"] for hit in res["hits"]["hits"]]
 
 
-# 🏷️ Recommendation endpoint
+# Recommendation endpoint
 @app.get("/recommend")
 def recommend_movies(tags: str):
     tag_list = tags.split(",")
@@ -65,7 +65,7 @@ def recommend_movies(tags: str):
     return [hit["_source"] for hit in res["hits"]["hits"]]
 
 
-# 📊 Top genres endpoint
+# Top genres endpoint
 @app.get("/top-genres")
 def top_genres():
     query = {
