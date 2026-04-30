@@ -39,6 +39,24 @@ MovieLens small dataset
 
 ---
 
+## 📦 Dataset Setup
+
+Download the MovieLens dataset:
+
+https://grouplens.org/datasets/movielens/latest/
+
+Extract it into:
+
+data/ml-latest-small/
+
+---
+
+Then run:
+
+```bash
+python ingest/merge_movies_tags.py
+````
+
 ## 🧠 Tech Stack
 
 * Elasticsearch
