@@ -8,16 +8,5 @@ __pycache__/
 node_modules/
 
 data/
-frontend/
-
 .env
 *.log
-
-Dockerfile
-docker-compose.yml
-README.md
-
-data/ml-latest-small/
-data/movies_final.json
-
-data/.gitkeep
