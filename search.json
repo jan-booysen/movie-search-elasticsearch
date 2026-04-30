@@ -1,0 +1,10 @@
+{
+    "query": {
+        "match": {
+            "title": {
+                "query": "toyy stroy",
+                "fuzziness": "AUTO"
+            }
+        }
+    }
+}

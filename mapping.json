@@ -1,0 +1,34 @@
+{
+    "mappings": {
+        "properties": {
+            "movie_id": {
+                "type": "integer"
+            },
+            "title": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "year": {
+                "type": "integer"
+            },
+            "genres": {
+                "type": "keyword"
+            },
+            "tags": {
+                "type": "text",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "tag_count": {
+                "type": "integer"
+            }
+        }
+    }
+}
